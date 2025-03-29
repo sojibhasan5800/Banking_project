@@ -17,6 +17,7 @@ class UserBankAccount(models.Model):
 
 class UserAddress(models.Model):
     user = models.OneToOneField(User, related_name='user_address', on_delete=models.CASCADE)
+    birth_date = models.DateField(blank=True, null=True)
     street_address = models.CharField(max_length=100)
     city = models.CharField(max_length= 100)
     postal_code = models.IntegerField()
