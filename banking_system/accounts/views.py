@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import FormView
 from django.contrib.auth import login,logout
 from django.contrib.auth.views import LoginView,LogoutView
+from django.views.generic import UpdateView
 
 from django.urls import reverse_lazy
 from .forms import UserRegistrationForm
@@ -14,7 +15,7 @@ from .forms import UserRegistrationForm
 class UserRegistrationView(FormView):
     template_name='accounts_html/registration.html'
     form_class = UserRegistrationForm
-    success_url = reverse_lazy('register')
+    success_url = reverse_lazy('home')
 
     def form_valid(self, form):
         print(form.cleaned_data)
