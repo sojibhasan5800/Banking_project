@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     #  'livereload',
     'django_browser_reload',  # Add django-browser-reload
     'accounts',
+    'core'
 ]
 
 MIDDLEWARE = [
