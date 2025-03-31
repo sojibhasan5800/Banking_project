@@ -43,7 +43,6 @@ class UserRegistrationForm(UserCreationForm):
             user = our_user,
             account_type  = account_type,
             gender = gender,
-            
             account_no = 100000+ our_user.id
             )
         return our_user
