@@ -23,6 +23,11 @@ class UserRegistrationForm(UserCreationForm):
         our_user = super().save(commit=False)
         if commit==True:
             our_user.save()
+            account_no = 100000 + our_user.id
+
+            while UserBankAccount.objects.filter(account_no=account_no).exists():
+                account_no += 1  # নতুন একটি account_no চেষ্টা করো
+
             account_type = self.cleaned_data.get('account_type')
             gender = self.cleaned_data.get('gender')
             postal_code = self.cleaned_data.get('postal_code')
@@ -43,7 +48,7 @@ class UserRegistrationForm(UserCreationForm):
             user = our_user,
             account_type  = account_type,
             gender = gender,
-            account_no = 100000+ our_user.id
+            account_no = account_no
             )
         return our_user
     def __init__(self, *args, **kwargs):
@@ -97,7 +102,7 @@ class UserUpdateForm(forms.ModelForm):
             if user_account:
                 self.fields['account_type'].initial = user_account.account_type
                 self.fields['gender'].initial = user_account.gender
-                self.fields['birth_date'].initial = user_account.birth_date
+                self.fields['birth_date'].initial = user_address.birth_date
                 self.fields['street_address'].initial = user_address.street_address
                 self.fields['city'].initial = user_address.city
                 self.fields['postal_code'].initial = user_address.postal_code
