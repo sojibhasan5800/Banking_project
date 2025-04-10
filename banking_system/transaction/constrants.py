@@ -1,7 +1,15 @@
-TRANSACTION_TYPE=(
-    (1,'Deposite'),
-    (2,'Withdrawl'),
-    (3,'Loan_request'),
-    (4,'Loan_Paid'),
 
+DEPOSIT = 1
+WITHDRAWAL = 2
+LOAN = 3
+LOAN_PAID = 4
+
+TRANSACTION_TYPE = (
+    (DEPOSIT, 'Deposite'),
+    (WITHDRAWAL, 'Withdrawal'),
+    (LOAN, 'Loan_request'),
+    (LOAN_PAID, 'Loan_Paid'),
+    
 )
+
+
